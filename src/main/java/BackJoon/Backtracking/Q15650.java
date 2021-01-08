@@ -52,6 +52,5 @@ public class Q15650 {
             permutation(list, result, n-1, r-1);
             list.add(i, result.remove(result.size() - 1));
         }
-
     }
 }

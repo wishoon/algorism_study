@@ -16,7 +16,7 @@ public class DepthFirstSearch {
         System.out.println(x + " ");
         // 현재 노드와 연결된 다른 노드를 재귀적으로 방문
         for (int i = 0; i < graph.get(x).size(); i++) {
-            int y  =graph.get(x).get(i);
+            int y = graph.get(x).get(i);
             if(!visited[y])
                 dfs(y);
         }
