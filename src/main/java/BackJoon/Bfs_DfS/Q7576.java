@@ -11,10 +11,12 @@ public class Q7576 {
 
     public static int M;
     public static int N;
+    public static int H;
     public static int[][] tomoto;
     public static boolean[][] visited;
-    public static int[] dx = {0, 1, 0, -1};
-    public static int[] dy = {1, 0, -1, 0};
+    public static int[] dx = { -1, 1, 0, 0 };
+    public static int[] dy = { 0, 0, -1, 1 };
+    public static int count = Integer.MIN_VALUE;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -22,6 +24,7 @@ public class Q7576 {
 
         M = Integer.parseInt(st.nextToken());
         N = Integer.parseInt(st.nextToken());
+
         tomoto = new int[N][M];
         visited = new boolean[N][M];
         for (int i = 0; i < N; i++) {
@@ -30,35 +33,57 @@ public class Q7576 {
                 tomoto[i][j] = Integer.parseInt(st.nextToken());
             }
         }
-        bfs(0, 0);
+        bfs();
     }
 
-    public static void bfs(int y, int x){
+    public static void bfs(){
 
         Queue<int[]> q = new LinkedList<>();
-        q.offer(new int[] {y, x});
 
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                if (tomoto[i][j] == 1)
+                    q.offer(new int[] {i, j});
+            }
+        }
         while (!q.isEmpty()){
+
             int curX = q.peek()[1];
             int curY = q.peek()[0];
 
+            q.poll();
+
             for (int i = 0; i < 4; i++) {
-                int movX = curX + dx[i];
-                int movY = curY + dy[i];
+                int nextX = curX + dx[i];
+                int nextY = curY + dy[i];
 
-                if(movX < 0 || movY < 0 || movX < N || movY < M)
-                    continue;
-                if(tomoto[movY][movX] == 1 && visited[movY][movX])
+                if(nextX < 0 || nextY < 0 || nextX >= M || nextY >= N)
                     continue;
 
-                if(tomoto[movY][movX] == 0 && !visited[movY][movX]){
+                if(tomoto[nextY][nextX] != 0)
+                    continue;
 
-                    visited[movY][movX] = true;
-                    tomoto[movY][movX] = 1;
+                tomoto[nextY][nextX] = tomoto[curY][curX] + 1;
 
+                q.offer(new int[] {nextY, nextX});
+            }
+            // 익은 토마토의 상하좌우는 1일 뒤에 익기 때문에 큐에 담는다.
+        }
 
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                if(tomoto[i][j] == 0) {
+                    System.out.println(-1);
+                    return;
                 }
             }
         }
+
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                count = Math.max(count, tomoto[i][j]);
+            }
+        }
+        System.out.println(count - 1);
     }
 }
