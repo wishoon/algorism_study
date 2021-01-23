@@ -36,7 +36,6 @@ public class Q1780 {
 
         for (int i = x; i < x + n; i++) {
             for (int j = y; j < y + n; j++) {
-                System.out.print(arr[i][j]);
                 if(arr[i][j] == 0){
                     zero++;
                 } else if(arr[i][j] == 1){
@@ -45,7 +44,6 @@ public class Q1780 {
                     minus++;
                 }
             }
-            System.out.println();
         }
 
         if(zero == n*n)
@@ -58,23 +56,15 @@ public class Q1780 {
             div(x, y, n/3);;
             div(x, y + n/3, n/3);
             div(x, y + 2 * n / 3, n/3);
+
             div(x + n/3, y, n/3);
             div(x + n/3, y + n/3, n/3);
-            div(x + 2 * n/3, y + n/3, n/3);
-
             div(x + n/3, y + 2 * n/3, n/3);
+
+            div(x + 2 * n/3, y, n/3);
+            div(x + 2 * n/3, y + n / 3, n/3);
+            div(x + 2 * n/3, y + 2 * n/3, n/3);
 
         }
     }
 }
-
-//    dfs(x, y, n / 3);
-//    dfs(x + n / 3, y, n / 3, );
-//    dfs(x + 2 * n / 3, y, n / 3);
-//
-//    dfs(x, y + n / 3, n / 3);
-//    dfs(x, y + 2 * n / 3, n / 3);
-//    dfs(n / 3, x + n / 3, y + n / 3);
-//    dfs(n / 3, x + n / 3, y + 2 * n / 3);
-//    dfs(n / 3, x + 2 * n / 3, y + n / 3);
-//    dfs(n / 3, x + 2 * n / 3, y + 2 * n / 3);
