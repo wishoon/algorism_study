@@ -1,4 +1,4 @@
-package v2.BackJoon.Backtracking;
+package v2.BackJoon.greedy;
 
 import java.io.BufferedReader;
 import java.io.IOException;
