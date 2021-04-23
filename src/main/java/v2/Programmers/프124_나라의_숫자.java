@@ -24,3 +24,4 @@ public class 프124_나라의_숫자 {
         return answer;
     }
 }
+
