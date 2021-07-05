@@ -1,4 +1,4 @@
-package Inflearn;
+package Inflearn.string;
 
 import java.io.BufferedReader;
 import java.io.IOException;
