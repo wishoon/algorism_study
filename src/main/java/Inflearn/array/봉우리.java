@@ -36,18 +36,10 @@ public class 봉우리 {
                     int nextY = dx[k] + i;
                     int nextX = dy[k] + j;
 
-//                    if(nextX < 0 || nextY < 0 || nextX >= n || nextY >= n) {
-//                        flag = false;
-//                        break;
-//                    }
-//                    System.out.println(nextY + " " + nextX + "|" + i + " " + j);
                     if(nextX >= 0 && nextX < n && nextY >= 0 && nextY < n && arr[nextY][nextX] >= arr[i][j]) {
-//                        System.out.println("===");
-//                        System.out.println(nextY + " " + nextX + "|" + i + " " + j);
                         flag = false;
                         break;
                     }
-//
                 }
                 if(flag == true) {
                     count++;
