@@ -20,23 +20,21 @@ public class 연속부분수열 {
 
     private static int solution(int n, int m, String[] arr) {
 
-        int r = 0;
-        int l = 0;
+        int lt = 0;
         int sum = 0;
         int answer = 0;
 
-        while(l < n && r < n) {
+        for (int rt = 0; rt < n; rt++) {
+            sum += Integer.parseInt(arr[rt]);
+
             if(sum == m) {
                 answer++;
-                sum -= Integer.parseInt(arr[l]);
-                l++;
-                continue;
-            } else if (sum > m) {
-                sum -= Integer.parseInt(arr[l]);
-                l++;
-            } else {
-                sum += Integer.parseInt(arr[r]);
-                r++;
+            }
+            while(sum >= m) {
+                sum -= Integer.parseInt(arr[lt++]);
+                if(sum == m) {
+                    answer++;
+                }
             }
         }
         return answer;
