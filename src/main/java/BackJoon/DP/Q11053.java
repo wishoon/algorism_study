@@ -32,12 +32,12 @@ public class Q11053 {
         System.out.println(max);
     }
 
-    public static int lts(int n){
-        if(dp[n] == null){
+    public static int lts(int n) {
+        if (dp[n] == null) {
             dp[n] = 1;
 
-            for (int i = n-1; i >= 0; i--) {
-                if(arr[i] < arr[n])
+            for (int i = n - 1; i >= 0; i--) {
+                if (arr[i] < arr[n])
                     dp[n] = Math.max(dp[n], lts(i) + 1);
             }
         }
